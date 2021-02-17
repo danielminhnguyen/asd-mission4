@@ -38,16 +38,18 @@ export default function Quote3() {
   const classes = useStyles();
   const history = useHistory();
 
-  let vehicle;
+  const [rego, setRego] = useState("");
+  const [vehicle, setVehicle] = useState("initialState");
 
   useEffect(() => {
     let rego = localStorage.getItem("rego");
     let licence = localStorage.getItem("licence");
     let businessUse = localStorage.getItem("businessUse");
-    let vehicle = localStorage.getItem("vehicle");
+    setVehicle(localStorage.getItem("vehicle"));
     let bicycleValue = localStorage.getItem("bicycleValue");
   }, []);
 
+  console.log(vehicle);
   return (
     <div className="column flex-center">
       <div className={classes.container}>

@@ -76,8 +76,6 @@ export default function Quote2() {
   const classes = useStyles();
   const history = useHistory();
 
-  const specialChar = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
-
   const successIcon = <CheckCircleOutlineIcon className={classes.success} />;
   const errorIcon = <ErrorOutlineIcon className={classes.error} />;
 
@@ -142,6 +140,7 @@ export default function Quote2() {
           </Tooltip>
         </Typography>
         <OutlinedInput
+          className={classNames(regoValidation ? classes.active : "")}
           value={rego}
           onChange={handleChangeRego}
           endAdornment={regoValidation ? successIcon : errorIcon}
@@ -164,6 +163,7 @@ export default function Quote2() {
         </Typography>
 
         <OutlinedInput
+          className={classNames(licenceValidation ? classes.active : "")}
           placeholder="e.g 5E0CG2H"
           value={licence}
           onChange={handleChangeLicence}

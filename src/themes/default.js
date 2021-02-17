@@ -96,6 +96,8 @@ export const theme = {
     },
     MuiOutlinedInput: {
       root: {
+        color: "black",
+        fontWeight: 700,
         borderRadius: 24,
         backgroundColor: "#C4C4C4",
       },

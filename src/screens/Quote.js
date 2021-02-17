@@ -106,7 +106,6 @@ export default function Quote() {
       localStorage.setItem("vehicle", vehicle);
       history.push("/quote3");
     } else if (vehicle !== "" && regoValidation === true) {
-      console.log("true");
       localStorage.setItem("rego", rego);
       localStorage.setItem("vehicle", vehicle);
       history.push("/quote2");
@@ -115,7 +114,6 @@ export default function Quote() {
     }
   };
 
-  console.log(vehicle);
   return (
     <div className="column flex-center">
       <div className={classes.titleWrapper}>
@@ -214,7 +212,10 @@ export default function Quote() {
           </Typography>
           <div>
             <OutlinedInput
-              className="mr-1"
+              className={classNames(
+                "mr-1",
+                regoValidation ? classes.active : ""
+              )}
               placeholder="e.g MCU208"
               value={rego}
               onChange={handleChangeRego}

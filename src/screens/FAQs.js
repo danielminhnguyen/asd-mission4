@@ -1,5 +1,6 @@
-import { makeStyles, Typography } from "@material-ui/core";
+import { Button, makeStyles, Typography } from "@material-ui/core";
 import React from "react";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -7,6 +8,15 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
+  },
+  growth: {
+    flexGrow: 1,
+  },
+  nav: {
+    marginTop: 50,
+    display: "flex",
+    flexDirection: "row",
+    minWidth: 700,
   },
 }));
 
@@ -20,6 +30,14 @@ export default function FAQs() {
         <Typography variant="h4">
           Frequently Asked Questions about Turners Insurance
         </Typography>
+      </div>
+      <div className={classes.nav}>
+        <Link to="/">
+          <Button variant="contained" color="primary">
+            Back
+          </Button>
+        </Link>
+        <div className={classes.growth} />
       </div>
     </div>
   );

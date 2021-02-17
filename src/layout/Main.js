@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import { ReactComponent as Logo } from "../assets/images/TurnersLogo.svg";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Link } from "react-router-dom";
 import LandingPage from "../screens/LandingPage";
 import FAQs from "../screens/FAQs";
 import Quote from "../screens/Quote";
@@ -40,7 +40,9 @@ export default function ButtonAppBar() {
         <Toolbar></Toolbar>
       </AppBar>
       <div className={classes.container}>
-        <Logo />
+        <Link to="/">
+          <Logo />
+        </Link>
       </div>
       <div className={classes.content}>
         <Switch>
