@@ -40,3 +40,11 @@ a {
   justify-content: center;
   align-items: center;
 }
+
+.mr-1 {
+  margin-right: 50px !important;
+}
+
+.mt-1 {
+  margin-right: 50px !important;
+}

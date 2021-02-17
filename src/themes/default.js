@@ -95,7 +95,10 @@ export const theme = {
       },
     },
     MuiOutlinedInput: {
-      root: {},
+      root: {
+        borderRadius: 24,
+        backgroundColor: "#C4C4C4",
+      },
     },
     MuiMenu: {
       paper: {

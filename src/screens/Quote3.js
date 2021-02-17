@@ -6,10 +6,10 @@ import {
   OutlinedInput,
   Typography,
 } from "@material-ui/core";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
 import ErrorOutlineIcon from "@material-ui/icons/ErrorOutline";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   nav: {
-    marginTop: 50,
+    marginTop: 200,
     display: "flex",
     flexDirection: "row",
     minWidth: 700,
@@ -36,6 +36,17 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Quote3() {
   const classes = useStyles();
+  const history = useHistory();
+
+  let vehicle;
+
+  useEffect(() => {
+    let rego = localStorage.getItem("rego");
+    let licence = localStorage.getItem("licence");
+    let businessUse = localStorage.getItem("businessUse");
+    let vehicle = localStorage.getItem("vehicle");
+    let bicycleValue = localStorage.getItem("bicycleValue");
+  }, []);
 
   return (
     <div className="column flex-center">
@@ -91,11 +102,20 @@ export default function Quote3() {
         </Grid>
       </div>
       <div className={classes.nav}>
-        <Link to="/quote2">
-          <Button variant="contained" color="primary">
-            Back
-          </Button>
-        </Link>
+        <Button
+          variant="contained"
+          color="secondary"
+          onClick={() => {
+            if (vehicle === "bicycle") {
+              history.push("/quote");
+            } else {
+              history.push("/quote2");
+            }
+          }}
+        >
+          Back
+        </Button>
+
         <div className={classes.growth} />
       </div>
     </div>

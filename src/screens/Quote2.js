@@ -8,6 +8,7 @@ import {
 import React, { useEffect, useState } from "react";
 
 import { checkRego, checkLicence } from "../utils";
+import classNames from "classnames";
 
 import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
 import ErrorOutlineIcon from "@material-ui/icons/ErrorOutline";
@@ -90,13 +91,13 @@ export default function Quote2() {
   const [businessUse, setBusinessUse] = useState(false);
 
   const handleChangeRego = (event) => {
-    let value = event.target.value;
+    let value = event.target.value.toUpperCase();
     setRego(value);
     setregoValidation(checkRego(value));
   };
 
   const handleChangeLicence = (event) => {
-    let value = event.target.value;
+    let value = event.target.value.toUpperCase();
     setLicence(value);
     setLicenceValidation(checkLicence(value));
   };
@@ -114,12 +115,15 @@ export default function Quote2() {
 
   useEffect(() => {
     let RegoStorage = localStorage.getItem("rego");
-    setRego(RegoStorage);
-    setregoValidation(checkRego(RegoStorage));
-
+    if (RegoStorage !== null) {
+      setRego(RegoStorage);
+      setregoValidation(checkRego(RegoStorage));
+    }
     let LicenceStorage = localStorage.getItem("licence");
-    setLicence(LicenceStorage);
-    setLicenceValidation(checkLicence(LicenceStorage));
+    if (LicenceStorage !== null) {
+      setLicence(LicenceStorage);
+      setLicenceValidation(checkLicence(LicenceStorage));
+    }
 
     setBusinessUse(localStorage.getItem("businessUse"));
   }, []);
@@ -170,7 +174,10 @@ export default function Quote2() {
         </Typography>
         <Button
           variant="contained"
-          className={businessUse ? classes.buttonActive : ""}
+          className={classNames(
+            businessUse ? classes.buttonActive : "",
+            "mr-1"
+          )}
           onClick={() => setBusinessUse(true)}
         >
           Yes
@@ -186,10 +193,21 @@ export default function Quote2() {
       <div className={classes.nav}>
         <Link to="/quote">
           <Button variant="contained" color="primary">
-            Back{" "}
+            Back
           </Button>
         </Link>
         <div className={classes.growth} />
+        <Button
+          className="mr-1"
+          variant="contained"
+          color="primary"
+          onClick={() => {
+            localStorage.clear();
+            history.push("/quote");
+          }}
+        >
+          Start Over
+        </Button>
         <Button variant="contained" color="primary" onClick={handleClick}>
           Get Quote
         </Button>

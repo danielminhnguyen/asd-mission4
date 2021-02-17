@@ -74,31 +74,38 @@ export default function Quote() {
 
   const classes = useStyles();
 
-  const specialChar = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
-
   const successIcon = <CheckCircleOutlineIcon className={classes.success} />;
   const errorIcon = <ErrorOutlineIcon className={classes.error} />;
 
   // number plate question
   const [rego, setRego] = useState("");
   const [regoValidation, setregoValidation] = useState(false);
+  // value question
+  const [bicycleValue, setBicycleValue] = useState(1000);
 
   const handleChangeRego = (event) => {
-    let value = event.target.value;
+    let value = event.target.value.toUpperCase();
     setRego(value);
     setregoValidation(checkRego(value));
   };
 
   useEffect(() => {
     let regoStorage = localStorage.getItem("rego");
-    setregoValidation(checkRego(regoStorage));
-    setRego(regoStorage);
+    if (regoStorage !== null) {
+      setregoValidation(checkRego(regoStorage));
+      setRego(regoStorage);
+    }
 
+    setBicycleValue(localStorage.getItem("bicycleValue"));
     setVehicle(localStorage.getItem("vehicle"));
   }, []);
 
   const handleClick = () => {
-    if (vehicle !== "" && regoValidation === true) {
+    if (vehicle === "bicycle" && bicycleValue !== 0) {
+      localStorage.setItem("bicycleValue", bicycleValue);
+      localStorage.setItem("vehicle", vehicle);
+      history.push("/quote3");
+    } else if (vehicle !== "" && regoValidation === true) {
       console.log("true");
       localStorage.setItem("rego", rego);
       localStorage.setItem("vehicle", vehicle);
@@ -108,6 +115,7 @@ export default function Quote() {
     }
   };
 
+  console.log(vehicle);
   return (
     <div className="column flex-center">
       <div className={classes.titleWrapper}>
@@ -176,7 +184,7 @@ export default function Quote() {
         </div>
       </div>
 
-      {vehicle === "" ? (
+      {vehicle === "" || vehicle === null ? (
         <div></div>
       ) : vehicle === "bicycle" ? (
         <div className={classes.titleWrapper}>
@@ -184,7 +192,12 @@ export default function Quote() {
             How much would you like to insure your <span>bicycle</span> for?
           </Typography>
           <div>
-            <OutlinedInput placeholder="$10,000"></OutlinedInput>
+            <OutlinedInput
+              placeholder="e.g. $10,000"
+              value={bicycleValue}
+              onChange={(event) => setBicycleValue(event.target.value)}
+              type="number"
+            ></OutlinedInput>
           </div>
         </div>
       ) : (
@@ -201,6 +214,7 @@ export default function Quote() {
           </Typography>
           <div>
             <OutlinedInput
+              className="mr-1"
               placeholder="e.g MCU208"
               value={rego}
               onChange={handleChangeRego}
@@ -220,7 +234,17 @@ export default function Quote() {
           </Button>
         </Link>
         <div className={classes.growth} />
-
+        <Button
+          className="mr-1"
+          variant="contained"
+          color="primary"
+          onClick={() => {
+            localStorage.clear();
+            window.location.reload();
+          }}
+        >
+          Start Over
+        </Button>
         <Button variant="contained" color="primary" onClick={handleClick}>
           Next
         </Button>
