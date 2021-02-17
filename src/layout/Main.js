@@ -6,6 +6,9 @@ import { ReactComponent as Logo } from "../assets/images/TurnersLogo.svg";
 import { Switch, Route } from "react-router-dom";
 import LandingPage from "../screens/LandingPage";
 import FAQs from "../screens/FAQs";
+import Quote from "../screens/Quote";
+import Quote2 from "../screens/Quote2";
+import Quote3 from "../screens/Quote3";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -41,8 +44,11 @@ export default function ButtonAppBar() {
       </div>
       <div className={classes.content}>
         <Switch>
-          <Route path="/" component={LandingPage} />
-          <Route path="/faq" componen={FAQs} />
+          <Route exact path="/" component={LandingPage} />
+          <Route exact path="/faq" component={FAQs} />
+          <Route exact path="/quote" component={Quote} />
+          <Route exact path="/quote2" component={Quote2} />
+          <Route exact path="/quote3" component={Quote3} />
         </Switch>
       </div>
     </div>

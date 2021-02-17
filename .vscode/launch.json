@@ -1,0 +1,19 @@
+{
+  "configurations": [
+    {
+      "type": "aws-sam",
+      "request": "direct-invoke",
+      "name": "FullStack:src/screens/Quote2.Quote2 (nodejs14.x)",
+      "invokeTarget": {
+        "target": "code",
+        "projectRoot": "",
+        "lambdaHandler": "src/screens/Quote2.Quote2"
+      },
+      "lambda": {
+        "runtime": "nodejs14.x",
+        "payload": {},
+        "environmentVariables": {}
+      }
+    }
+  ]
+}

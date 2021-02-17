@@ -26,13 +26,15 @@ export default function LandingPage() {
             We will be there.
           </Typography>
           <div>
-            <Button
-              className={classes.button}
-              variant="contained"
-              color="primary"
-            >
-              Get a quote
-            </Button>
+            <Link to="/quote">
+              <Button
+                className={classes.button}
+                variant="contained"
+                color="primary"
+              >
+                Get a quote
+              </Button>
+            </Link>
             <Link to="/faq">
               <Button
                 className={classes.button}
