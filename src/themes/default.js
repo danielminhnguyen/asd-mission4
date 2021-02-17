@@ -45,6 +45,17 @@ export const theme = {
       "0px 12px 33px 0px #E8EAFC, 0 3px 3px -2px #B2B2B21A, 0 1px 8px 0 #9A9A9A1A",
   },
   overrides: {
+    MuiTooltip: {
+      tooltip: {
+        borderRadius: 24,
+        padding: 15,
+        fontSize: "1em",
+        fontWeight: 600,
+        color: "#000",
+        backgroundColor: "rgba(56, 120, 184, 0.7)",
+        minWidth: 600,
+      },
+    },
     "MuiListItem-button": {
       backgroundColor: "black",
     },

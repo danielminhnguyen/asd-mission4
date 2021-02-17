@@ -3,16 +3,22 @@ import {
   ButtonBase,
   makeStyles,
   OutlinedInput,
+  Tooltip,
   Typography,
 } from "@material-ui/core";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import classNames from "classnames";
+import { checkRego } from "../utils";
+
+import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
+import ErrorOutlineIcon from "@material-ui/icons/ErrorOutline";
+import HelpOutlineIcon from "@material-ui/icons/HelpOutline";
 
 import { ReactComponent as Car } from "../assets/images/car.svg";
 import { ReactComponent as Motorcycle } from "../assets/images/motorcycle.svg";
 import { ReactComponent as Truck } from "../assets/images/truck.svg";
 import { ReactComponent as Bicycle } from "../assets/images/bicycle.svg";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -50,38 +56,58 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "row",
     minWidth: 700,
   },
+  success: {
+    color: "green",
+  },
+  error: {
+    color: "red",
+  },
+  tooltip: {
+    transform: "translate(0%,-50%)",
+  },
 }));
 
 export default function Quote() {
-  const [vehicle, setVehicle] = useState(0);
+  const history = useHistory();
+
+  const [vehicle, setVehicle] = useState("");
 
   const classes = useStyles();
 
-  const handleClick = () => {};
+  const specialChar = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
 
-  const renderContent = () => {
-    switch (vehicle) {
-      case 1:
-        return (
-          <div>
-            <Typography>How mu</Typography>
-          </div>
-        );
-        break;
-      case 2:
-        return <div></div>;
-        break;
-      case 3:
-        return <div></div>;
-        break;
-      case 4:
-        return <div></div>;
-        break;
+  const successIcon = <CheckCircleOutlineIcon className={classes.success} />;
+  const errorIcon = <ErrorOutlineIcon className={classes.error} />;
 
-      default:
-        break;
+  // number plate question
+  const [rego, setRego] = useState("");
+  const [regoValidation, setregoValidation] = useState(false);
+
+  const handleChangeRego = (event) => {
+    let value = event.target.value;
+    setRego(value);
+    setregoValidation(checkRego(value));
+  };
+
+  useEffect(() => {
+    let regoStorage = localStorage.getItem("rego");
+    setregoValidation(checkRego(regoStorage));
+    setRego(regoStorage);
+
+    setVehicle(localStorage.getItem("vehicle"));
+  }, []);
+
+  const handleClick = () => {
+    if (vehicle !== "" && regoValidation === true) {
+      console.log("true");
+      localStorage.setItem("rego", rego);
+      localStorage.setItem("vehicle", vehicle);
+      history.push("/quote2");
+    } else {
+      alert("Please enter all the required fields");
     }
   };
+
   return (
     <div className="column flex-center">
       <div className={classes.titleWrapper}>
@@ -97,10 +123,10 @@ export default function Quote() {
           <ButtonBase
             focusRipple
             className={classNames(
-              vehicle === 1 ? classes.active : "",
+              vehicle === "car" ? classes.active : "",
               classes.button
             )}
-            onClick={() => setVehicle(1)}
+            onClick={() => setVehicle("car")}
           >
             <Car />
           </ButtonBase>
@@ -111,10 +137,10 @@ export default function Quote() {
           <ButtonBase
             focusRipple
             className={classNames(
-              vehicle === 2 ? classes.active : "",
+              vehicle === "motorcycle" ? classes.active : "",
               classes.button
             )}
-            onClick={() => setVehicle(2)}
+            onClick={() => setVehicle("motorcycle")}
           >
             <Motorcycle />
           </ButtonBase>
@@ -125,10 +151,10 @@ export default function Quote() {
           <ButtonBase
             focusRipple
             className={classNames(
-              vehicle === 3 ? classes.active : "",
+              vehicle === "truck" ? classes.active : "",
               classes.button
             )}
-            onClick={() => setVehicle(3)}
+            onClick={() => setVehicle("truck")}
           >
             <Truck />
           </ButtonBase>
@@ -139,10 +165,10 @@ export default function Quote() {
           <ButtonBase
             focusRipple
             className={classNames(
-              vehicle === 4 ? classes.active : "",
+              vehicle === "bicycle" ? classes.active : "",
               classes.button
             )}
-            onClick={() => setVehicle(4)}
+            onClick={() => setVehicle("bicycle")}
           >
             <Bicycle />
           </ButtonBase>
@@ -150,37 +176,54 @@ export default function Quote() {
         </div>
       </div>
 
-      <div className={classes.titleWrapper}>
-        <Typography className={classes.title} variant="h4">
-          What is the <span>number plate?</span>
-        </Typography>
-        <div>
-          <OutlinedInput placeholder="e.g MCU208" />
-          <Button variant="contained" color="secondary">
-            I don't have one
-          </Button>
+      {vehicle === "" ? (
+        <div></div>
+      ) : vehicle === "bicycle" ? (
+        <div className={classes.titleWrapper}>
+          <Typography className={classes.title} variant="h4">
+            How much would you like to insure your <span>bicycle</span> for?
+          </Typography>
+          <div>
+            <OutlinedInput placeholder="$10,000"></OutlinedInput>
+          </div>
         </div>
-      </div>
-
-      <div className={classes.titleWrapper}>
-        <Typography className={classes.title} variant="h4">
-          How much would you like to insure your <span>bicycle</span> for?
-        </Typography>
-        <div>
-          <OutlinedInput placeholder="$10,000"></OutlinedInput>
+      ) : (
+        <div className={classes.titleWrapper}>
+          <Typography className={classes.title} variant="h4">
+            What is the <span>number plate?</span>
+            <Tooltip
+              className={classes.tooltip}
+              placement="right-start"
+              title="These plates can have up to six characters. They can be made up of letters, numbers or a combination of both, and include captions, messages or slogans"
+            >
+              <HelpOutlineIcon fontSize="small" />
+            </Tooltip>
+          </Typography>
+          <div>
+            <OutlinedInput
+              placeholder="e.g MCU208"
+              value={rego}
+              onChange={handleChangeRego}
+              endAdornment={regoValidation ? successIcon : errorIcon}
+            />
+            <Button variant="contained" color="secondary">
+              I don't have one
+            </Button>
+          </div>
         </div>
-      </div>
+      )}
 
       <div className={classes.nav}>
-        <Button variant="contained" color="primary">
-          Previous
-        </Button>
-        <div className={classes.growth} />
-        <Link to="/quote2">
+        <Link to="/">
           <Button variant="contained" color="primary">
-            Next
+            Back
           </Button>
         </Link>
+        <div className={classes.growth} />
+
+        <Button variant="contained" color="primary" onClick={handleClick}>
+          Next
+        </Button>
       </div>
     </div>
   );
