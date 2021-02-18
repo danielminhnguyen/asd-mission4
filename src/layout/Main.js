@@ -40,17 +40,37 @@ export default function ButtonAppBar() {
         <Toolbar></Toolbar>
       </AppBar>
       <div className={classes.container}>
-        <Link to="/">
+        <Link to={`${process.env.PUBLIC_URL}/`}>
           <Logo />
         </Link>
       </div>
       <div className={classes.content}>
         <Switch>
-          <Route exact path="/" component={LandingPage} />
-          <Route exact path="/faq" component={FAQs} />
-          <Route exact path="/quote" component={Quote} />
-          <Route exact path="/quote2" component={Quote2} />
-          <Route exact path="/quote3" component={Quote3} />
+          <Route
+            exact
+            path={`${process.env.PUBLIC_URL}/`}
+            component={LandingPage}
+          />
+          <Route
+            exact
+            path={`${process.env.PUBLIC_URL}/faq`}
+            component={FAQs}
+          />
+          <Route
+            exact
+            path={`${process.env.PUBLIC_URL}/quote`}
+            component={Quote}
+          />
+          <Route
+            exact
+            path={`${process.env.PUBLIC_URL}/quote2`}
+            component={Quote2}
+          />
+          <Route
+            exact
+            path={`${process.env.PUBLIC_URL}/quote3`}
+            component={Quote3}
+          />
         </Switch>
       </div>
     </div>

@@ -229,7 +229,7 @@ export default function Quote() {
       )}
 
       <div className={classes.nav}>
-        <Link to="/">
+        <Link to={`${process.env.PUBLIC_URL}/`}>
           <Button variant="contained" color="primary">
             Back
           </Button>
