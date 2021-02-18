@@ -14,8 +14,6 @@ deploy:
   # Github security/auth token
   github_token: $GITHUB_TOKEN
   # Directory where your generated files are located
-  local_dir: public
-  # Git branch on which it should deploy (master, gh-pages, foo...)
-  target_branch: gh-pages
+  local_dir: build
   on:
     branch: main
