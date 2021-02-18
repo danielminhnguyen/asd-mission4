@@ -239,7 +239,7 @@ export default function Quote() {
           color="primary"
           onClick={() => {
             localStorage.clear();
-            window.location.reload();
+            setTimeout(() => window.location.reload());
           }}
         >
           Start Over
