@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
 }));
-
+console.log(process.env.PUBLIC_URL);
 export default function ButtonAppBar() {
   const classes = useStyles();
 

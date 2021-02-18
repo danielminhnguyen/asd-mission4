@@ -221,9 +221,7 @@ export default function Quote() {
               onChange={handleChangeRego}
               endAdornment={regoValidation ? successIcon : errorIcon}
             />
-            <Button variant="contained" color="secondary">
-              I don't have one
-            </Button>
+            <Button variant="contained">I don't have one</Button>
           </div>
         </div>
       )}
