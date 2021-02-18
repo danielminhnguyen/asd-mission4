@@ -105,7 +105,7 @@ export default function Quote2() {
       localStorage.setItem("rego", rego);
       localStorage.setItem("licence", licence);
       localStorage.setItem("businessUse", businessUse);
-      history.push("/quote3");
+      history.push(`${process.env.PUBLIC_URL}/quote3`);
     } else {
       alert("Please enter all the required fields");
     }
@@ -122,7 +122,6 @@ export default function Quote2() {
       setLicence(LicenceStorage);
       setLicenceValidation(checkLicence(LicenceStorage));
     }
-
     setBusinessUse(localStorage.getItem("businessUse"));
   }, []);
 
@@ -191,7 +190,7 @@ export default function Quote2() {
         </Button>
       </div>
       <div className={classes.nav}>
-        <Link to="/quote">
+        <Link to={`${process.env.PUBLIC_URL}/quote`}>
           <Button variant="contained" color="primary">
             Back
           </Button>
@@ -203,7 +202,7 @@ export default function Quote2() {
           color="primary"
           onClick={() => {
             localStorage.clear();
-            history.push("/quote");
+            history.push(`${process.env.PUBLIC_URL}/quote`);
           }}
         >
           Start Over

@@ -100,9 +100,9 @@ export default function Quote3() {
           color="secondary"
           onClick={() => {
             if (vehicle === "bicycle") {
-              history.push("/quote");
+              history.push(`${process.env.PUBLIC_URL}/quote`);
             } else {
-              history.push("/quote2");
+              history.push(`${process.env.PUBLIC_URL}/quote2`);
             }
           }}
         >

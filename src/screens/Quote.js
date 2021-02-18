@@ -104,11 +104,11 @@ export default function Quote() {
     if (vehicle === "bicycle" && bicycleValue !== 0) {
       localStorage.setItem("bicycleValue", bicycleValue);
       localStorage.setItem("vehicle", vehicle);
-      history.push("/quote3");
+      history.push(`${process.env.PUBLIC_URL}/quote3`);
     } else if (vehicle !== "" && regoValidation === true) {
       localStorage.setItem("rego", rego);
       localStorage.setItem("vehicle", vehicle);
-      history.push("/quote2");
+      history.push(`${process.env.PUBLIC_URL}/quote2`);
     } else {
       alert("Please enter all the required fields");
     }
