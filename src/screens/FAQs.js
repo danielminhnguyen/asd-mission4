@@ -23,11 +23,11 @@ const useStyles = makeStyles((theme) => ({
     marginTop: 50,
     display: "flex",
     flexDirection: "row",
-    minWidth: 700,
+    minWidth: 600,
   },
   content: {
     marginTop: 30,
-    maxWidth: 700,
+    maxWidth: 600,
   },
 }));
 
