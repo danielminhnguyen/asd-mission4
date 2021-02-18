@@ -118,7 +118,7 @@ export default function Quote() {
     <div className="column flex-center">
       <div className={classes.titleWrapper}>
         <Typography className={classes.title} variant="h2" color="primary">
-          Let's get you started
+          Let's get you started.
         </Typography>
         <Typography className={classes.title} variant="h4">
           What type of <span>vehicle</span> are you insuring?
