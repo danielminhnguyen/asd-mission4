@@ -26,7 +26,7 @@ export default function LandingPage() {
             We will be there.
           </Typography>
           <div>
-            <Link to="/quote">
+            <Link to={`${process.env.PUBLIC_URL}/quote`}>
               <Button
                 className={classes.button}
                 variant="contained"
@@ -35,7 +35,7 @@ export default function LandingPage() {
                 Get a quote
               </Button>
             </Link>
-            <Link to="/faq">
+            <Link to={`${process.env.PUBLIC_URL}/faq`}>
               <Button
                 className={classes.button}
                 variant="contained"
