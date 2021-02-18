@@ -14,7 +14,7 @@ import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
 import ErrorOutlineIcon from "@material-ui/icons/ErrorOutline";
 import HelpOutlineIcon from "@material-ui/icons/HelpOutline";
 
-import DriverLicence from "../assets/images/Photo-driver-licence-content-graphic.png";
+import DriverLicence from "../assets/images/driver-license.png";
 
 import { Link, useHistory } from "react-router-dom";
 
