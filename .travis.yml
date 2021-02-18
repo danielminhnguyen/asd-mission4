@@ -7,9 +7,15 @@ cache:
 script:
   - npm run build
 deploy:
+  # Use Github pages deploy process
   provider: pages
+  # Keep builded pages
   skip_cleanup: true
+  # Github security/auth token
   github_token: $GITHUB_TOKEN
-  keep_history: true
+  # Directory where your generated files are located
+  local_dir: public
+  # Git branch on which it should deploy (master, gh-pages, foo...)
+  target_branch: gh-pages
   on:
     branch: main
