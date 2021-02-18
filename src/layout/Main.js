@@ -48,12 +48,14 @@ export default function ButtonAppBar() {
         <Switch>
           <Route
             exact
-            path={`${process.env.PUBLIC_URL}/`}
+            // path={`${process.env.PUBLIC_URL}/`}
+            path={`/`}
             component={LandingPage}
           />
           <Route
             exact
-            path={`${process.env.PUBLIC_URL}/faq`}
+            path={`/faq`}
+            // path={`${process.env.PUBLIC_URL}/faq`}
             component={FAQs}
           />
           <Route
