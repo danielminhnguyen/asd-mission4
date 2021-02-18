@@ -1,15 +1,7 @@
-import {
-  Button,
-  formatMs,
-  Grid,
-  makeStyles,
-  OutlinedInput,
-  Typography,
-} from "@material-ui/core";
+import { Button, Grid, makeStyles, Typography } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
-import CheckCircleOutlineIcon from "@material-ui/icons/CheckCircleOutline";
-import ErrorOutlineIcon from "@material-ui/icons/ErrorOutline";
-import { Link, useHistory } from "react-router-dom";
+
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -38,15 +30,14 @@ export default function Quote3() {
   const classes = useStyles();
   const history = useHistory();
 
-  const [rego, setRego] = useState("");
   const [vehicle, setVehicle] = useState("initialState");
 
   useEffect(() => {
-    let rego = localStorage.getItem("rego");
-    let licence = localStorage.getItem("licence");
-    let businessUse = localStorage.getItem("businessUse");
+    // let rego = localStorage.getItem("rego");
+    // let licence = localStorage.getItem("licence");
+    // let businessUse = localStorage.getItem("businessUse");
     setVehicle(localStorage.getItem("vehicle"));
-    let bicycleValue = localStorage.getItem("bicycleValue");
+    // let bicycleValue = localStorage.getItem("bicycleValue");
   }, []);
 
   console.log(vehicle);
