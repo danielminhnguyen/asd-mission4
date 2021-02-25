@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/mission4/static/css/main.4558056f.chunk.css",
+    "main.js": "/mission4/static/js/main.fdc72c11.chunk.js",
+    "main.js.map": "/mission4/static/js/main.fdc72c11.chunk.js.map",
+    "runtime-main.js": "/mission4/static/js/runtime-main.92a44850.js",
+    "runtime-main.js.map": "/mission4/static/js/runtime-main.92a44850.js.map",
+    "static/js/2.897798d9.chunk.js": "/mission4/static/js/2.897798d9.chunk.js",
+    "static/js/2.897798d9.chunk.js.map": "/mission4/static/js/2.897798d9.chunk.js.map",
+    "static/js/3.fb0c8834.chunk.js": "/mission4/static/js/3.fb0c8834.chunk.js",
+    "static/js/3.fb0c8834.chunk.js.map": "/mission4/static/js/3.fb0c8834.chunk.js.map",
+    "index.html": "/mission4/index.html",
+    "static/css/main.4558056f.chunk.css.map": "/mission4/static/css/main.4558056f.chunk.css.map",
+    "static/js/2.897798d9.chunk.js.LICENSE.txt": "/mission4/static/js/2.897798d9.chunk.js.LICENSE.txt",
+    "static/media/TurnersLogo.36c8b1ef.svg": "/mission4/static/media/TurnersLogo.36c8b1ef.svg",
+    "static/media/bicycle.c4a24094.svg": "/mission4/static/media/bicycle.c4a24094.svg",
+    "static/media/car.c1e1012c.svg": "/mission4/static/media/car.c1e1012c.svg",
+    "static/media/driver-license.245436ff.png": "/mission4/static/media/driver-license.245436ff.png",
+    "static/media/motorcycle.827a2066.svg": "/mission4/static/media/motorcycle.827a2066.svg",
+    "static/media/off_road.898669b9.svg": "/mission4/static/media/off_road.898669b9.svg",
+    "static/media/truck.c7d18129.svg": "/mission4/static/media/truck.c7d18129.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.92a44850.js",
+    "static/js/2.897798d9.chunk.js",
+    "static/css/main.4558056f.chunk.css",
+    "static/js/main.fdc72c11.chunk.js"
+  ]
+}
